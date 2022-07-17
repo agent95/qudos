@@ -1,0 +1,44 @@
+<mat-card class="w-1/2 m-auto">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <h1>Invite User</h1>
+
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+    <mat-form-field  class="w-full pt-1" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+       matInput
+       email
+        type="text"
+        name="email"
+        [(ngModel)]="form.email"
+        required
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.errors && f.submitted" >
+        Email is required!
+      </mat-error>
+  </mat-form-field>
+
+    <button mat-stroked-button mat-button color="primary" class="mt-2">Send</button>
+        <mat-error *ngIf="f.submitted && isInviteFailed">
+           {{ errorMessage }}
+        </mat-error>
+    </form>
+
+
+    </mat-card-content>
+
+    <mat-card-content *ngIf="inviteToken">
+        <textarea class="w-full">{{inviteUrl}}</textarea>
+        <button mat-stroked-button mat-button color="secondary" class="mt-2" (click)="copyText(inviteUrl)">Copy Url</button>
+    </mat-card-content>
+</mat-card>
+
+
+

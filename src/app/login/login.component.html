@@ -1,1 +1,61 @@
-<p>login works!</p>
+<mat-card class="w-1/2 m-auto">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <h1>Login</h1>
+
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+    <mat-form-field  class="w-full pt-1" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+       matInput
+       email
+        type="text"
+        name="email"
+        [(ngModel)]="form.email"
+        required
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.errors && f.submitted" >
+        Email is required!
+      </mat-error>
+  </mat-form-field>
+
+    <mat-form-field  class="w-full pt-1" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+        />
+        <mat-error  *ngIf="password.errors && f.submitted" >
+          <mat-error *ngIf="password.errors['required']">Password is required</mat-error>
+          <mat-error *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </mat-error>
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-stroked-button mat-button color="primary" class="mt-2">Log in</button>
+        <mat-error *ngIf="f.submitted && isLoginFailed">
+          Login failed: {{ errorMessage }}
+        </mat-error>
+    </form>
+
+    <div *ngIf="isLoggedIn">
+        Logged in as {{ roles }}.
+      </div>
+
+    </mat-card-content>
+</mat-card>
+
+

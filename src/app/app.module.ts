@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,17 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 
+import {MaterialQudosModules} from '../material.modules';
+import { LogOutBtnComponent } from './log-out-btn/log-out-btn.component';
+import { InviteComponent } from './invite/invite.component';
+import { AcceptInviteComponent } from './accept-invite/accept-invite.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginBtnComponent } from './login-btn/login-btn.component';
+
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +36,19 @@ import { BoardUserComponent } from './board-user/board-user.component';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    LogOutBtnComponent,
+    InviteComponent,
+    AcceptInviteComponent,
+    ResetPasswordComponent,
+    DashboardComponent,
+    LoginBtnComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -38,9 +56,17 @@ import { BoardUserComponent } from './board-user/board-user.component';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    BrowserAnimationsModule
+    JwtModule.forRoot({ // for JwtHelperService
+      config: {
+        tokenGetter: () => {
+          return '';
+        }
+      }
+    }),
+    BrowserAnimationsModule,
+    MaterialQudosModules
   ],
-  providers: [],
+  providers: [JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

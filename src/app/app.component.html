@@ -1,2 +1,9 @@
-
-<router-outlet></router-outlet>
+<mat-toolbar class="flex justify-between">
+    <span>Qudos</span>
+    <app-login-btn *ngIf="!isLoggedIn"></app-login-btn>
+    <app-log-out-btn *ngIf="isLoggedIn"></app-log-out-btn>
+</mat-toolbar>
+<div class="p-20">
+    <router-outlet></router-outlet>
+</div>
+<mat-footer-row></mat-footer-row>
