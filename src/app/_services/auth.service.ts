@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenStorageService } from './token-storage.service';
 
-const AUTH_API = 'http://localhost:3000/api/auth/';
+// const AUTH_API = 'http://localhost:3000/api/auth/';
+const AUTH_API = 'http://146.190.193.83:3000/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
