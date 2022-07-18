@@ -29,7 +29,7 @@ export class InviteComponent implements OnInit {
         next: (data) => {
           this.isInviteFailed = false;
           this.inviteToken = data.token;
-          this.inviteUrl = `http:localhost:4200/accept-invite/${this.inviteToken}`
+          this.inviteUrl = `http:qudos.app/accept-invite/${this.inviteToken}`
         },
         error: (err) => {
           this.errorMessage = err.error.message;
