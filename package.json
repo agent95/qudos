@@ -2,7 +2,7 @@
   "name": "qudos-app",
   "version": "0.0.0",
   "scripts": {
-    "deploy":"mv dist/qudos-app/* ../html/*",
+    "deploy":"mv -v dist/qudos-app/* ../html/",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build && mv dist/qudos-app _static",
