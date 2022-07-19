@@ -16,15 +16,16 @@ import {  AuthGuardService as AuthGuard } from './_services/auth-guard.service';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'invite', component: InviteComponent , canActivate: [AuthGuard] },
   { path: 'accept-invite/:token', component: AcceptInviteComponent },
-  { path: 'reset-password/:email', component: ResetPasswordComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'signup', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+
+  // { path: 'user', component: BoardUserComponent },
+  // { path: 'mod', component: BoardModeratorComponent },
+  // { path: 'admin', component: BoardAdminComponent },
+  // { path: 'invite', component: InviteComponent , canActivate: [AuthGuard] },
+  // { path: 'reset-password/:email', component: ResetPasswordComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

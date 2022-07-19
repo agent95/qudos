@@ -6,4 +6,9 @@
     </mat-card-content>
 </mat-card>
 
+<app-reset-password *ngIf="!invalidToken" [userEmail]="userEmail"></app-reset-password>
+
+
+
+
 

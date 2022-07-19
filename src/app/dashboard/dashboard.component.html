@@ -1,1 +1,5 @@
 <p>dashboard works! Role: {{ roles}}</p>
+
+<div *ngIf="isModerator">
+    <app-invite></app-invite>
+</div>

@@ -10,7 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./accept-invite.component.scss']
 })
 export class AcceptInviteComponent implements OnInit {
-  invalidToken: boolean = false;
+  invalidToken: boolean = true;
+  userEmail: string = '';
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
@@ -35,7 +36,9 @@ export class AcceptInviteComponent implements OnInit {
     this.authService.validateInviteToken(token).subscribe(
       {
         next: (res) => {
-          this.router.navigate(['/reset-password', res.email])
+          // this.router.navigate(['/reset-password', res.email])
+          this.invalidToken = false;
+          this.userEmail = res.email;
         } ,
         error: (err) => {
           this.invalidToken = true;

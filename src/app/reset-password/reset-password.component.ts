@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -13,7 +13,6 @@ export class ResetPasswordComponent implements OnInit{
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
    }
 
-   userEmail = "";
    form: any = {
     username: null,
     password: null
@@ -22,18 +21,20 @@ export class ResetPasswordComponent implements OnInit{
   isSignUpFailed = false;
   errorMessage = '';
 
+  @Input() userEmail = '';
+
    ngOnInit(): void {
-    this.route.params.subscribe(
-      {
-        next:(data) => {
-          this.userEmail = data['email'];
-        },
-        error:(err)=>{
-          console.log(err)
-        },
-        complete:() => { }
-      }
-    )
+    // this.route.params.subscribe(
+    //   {
+    //     next:(data) => {
+    //       this.userEmail = data['email'];
+    //     },
+    //     error:(err)=>{
+    //       console.log(err)
+    //     },
+    //     complete:() => { }
+    //   }
+    // )
     
    }
 
