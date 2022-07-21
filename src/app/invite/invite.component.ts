@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-invite',
@@ -29,7 +31,7 @@ export class InviteComponent implements OnInit {
         next: (data) => {
           this.isInviteFailed = false;
           this.inviteToken = data.token;
-          this.inviteUrl = `http:qudos.app/accept-invite/${this.inviteToken}`
+          this.inviteUrl = `${environment.INVITE_URL}/accept-invite/${this.inviteToken}`
         },
         error: (err) => {
           this.errorMessage = err.error.message;

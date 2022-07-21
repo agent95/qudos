@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  API_URL : 'http://qudos.app:3001',
-  // API_URL : 'http://146.190.193.83:3000',
+  // API_URL : 'https://qudos.app:3000',
+  API_URL : 'http://146.190.193.83:3000',
+  INVITE_URL : 'http://146.190.193.83'
 };
