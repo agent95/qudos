@@ -1,9 +1,21 @@
 <mat-toolbar class="flex justify-between">
-    <span>Qudos</span>
-    <app-login-btn *ngIf="!isLoggedIn"></app-login-btn>
-    <app-log-out-btn *ngIf="isLoggedIn"></app-log-out-btn>
+    <div class="p-2">
+        <span>Qudos </span>
+        <small class="text-sm text-slate-500"><i>...more than just thanks!</i></small>
+    </div>
+    <div class="flex">
+        <app-sign-up-btn *ngIf="!isLoggedIn"></app-sign-up-btn>
+        <app-login-btn *ngIf="!isLoggedIn"></app-login-btn>
+        <app-log-out-btn *ngIf="isLoggedIn"></app-log-out-btn>
+    </div>
+    
 </mat-toolbar>
-<div class="p-20">
+<div *ngIf="userName" class="flex justify-between px-4 py-2" >
+    <div class="text-xl text-slate-500">{{userName}},</div>
+    <div class="text-right">{{userEmail}}</div>
+</div>
+<mat-divider class="pb-2"></mat-divider>
+<div class="px-4">
     <router-outlet></router-outlet>
 </div>
 <mat-footer-row></mat-footer-row>

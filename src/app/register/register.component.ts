@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Router } from '@angular/router';
+
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -25,11 +27,10 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null
   };
-  isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -40,9 +41,8 @@ export class RegisterComponent implements OnInit {
     this.authService.register(username, email, password).subscribe(
       {
         next: (data) => {
-          console.log(data);
-          this.isSuccessful = true;
           this.isSignUpFailed = false;
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           this.errorMessage = err.error.message;

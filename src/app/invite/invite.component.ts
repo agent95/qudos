@@ -3,7 +3,6 @@ import { AuthService } from '../_services/auth.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-invite',
   templateUrl: './invite.component.html',
@@ -18,6 +17,7 @@ export class InviteComponent implements OnInit {
   errorMessage = '';
   inviteToken = '';
   inviteUrl = '';
+  teamId: any;
 
   constructor(private authService: AuthService, private clipboard:Clipboard) { }
 
@@ -26,7 +26,7 @@ export class InviteComponent implements OnInit {
 
   onSubmit(): void {
     const { email, password } = this.form;
-    this.authService.invite(email).subscribe(
+    this.authService.invite(email, this.teamId).subscribe(
       {
         next: (data) => {
           this.isInviteFailed = false;

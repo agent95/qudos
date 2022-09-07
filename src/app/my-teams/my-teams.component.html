@@ -1,0 +1,29 @@
+<div *ngIf="myTeams.length">
+  <small class="text-slate-500 uppercase">My Teams</small>
+ 
+
+  <mat-tab-group [(selectedIndex)]="teamsTabIndex" class="mb-4" mat-align-tabs="start">
+    <mat-tab  *ngFor="let team of myTeams" [matTooltip]="team.name">
+      <ng-template mat-tab-label>
+        {{team.name.slice(0, 2).toUpperCase()}} 
+        <sup *ngIf="team.isOwner"><mat-icon  class="text-sm">star</mat-icon></sup>
+      </ng-template>
+      <div class="py-2 px-4">
+        <app-team-details [team]="team"></app-team-details>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div *ngIf="invitedTo.length">
+  <small class="text-slate-500 uppercase">Invited To</small>
+  <mat-tab-group [(selectedIndex)]="invitedTabIndex" mat-align-tabs="start">
+    <!-- Invited to -->
+    <mat-tab *ngFor="let team of invitedTo" [label]="team.name.slice(0, 2).toUpperCase()" [matTooltip]="team.name">
+      <div class="py-2 px-4">
+        <app-team-details [team]="team" [isInvited]="true" [userId]="userId"></app-team-details>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<button mat-button color="primary" (click)="openCreateTeam()" class="mat-tab-label"><mat-icon>add</mat-icon> <span>New Team</span></button>

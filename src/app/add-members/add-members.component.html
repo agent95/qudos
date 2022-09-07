@@ -1,6 +1,7 @@
-<mat-card class="w-1/2 m-auto">
+<!-- <app-invite></app-invite> -->
+<!-- <mat-card class="w-1/2 m-auto"> -->
     <mat-card-content fxLayout="column" fxLayoutAlign="center center">
-        <h2>Invite a user</h2>
+        <h2>New Member</h2>
 
     <form
       name="form"
@@ -23,12 +24,18 @@
       <mat-error *ngIf="email.errors && f.submitted" >
         Email is required!
       </mat-error>
+      
   </mat-form-field>
-
-    <button mat-stroked-button mat-button color="primary" class="mt-2">Send</button>
-        <mat-error *ngIf="f.submitted && isInviteFailed">
-           {{ errorMessage }}
-        </mat-error>
+    <span *ngIf="successMessage" class="text-green-500">
+    Invitation has been sent.
+  </span>
+    <mat-error *ngIf="f.submitted && isInviteFailed">
+      {{ errorMessage }}
+  </mat-error>
+    <div class="flex justify-between">
+        <button type="button" mat-stroked-button mat-button color="secondary" class="mt-2" (click)="closeModal()">Back</button>
+        <button mat-stroked-button mat-button color="primary" class="mt-2">Invite</button>
+    </div>
     </form>
 
 
@@ -38,4 +45,7 @@
         <textarea class="w-full">{{inviteUrl}}</textarea>
         <button mat-stroked-button mat-button color="secondary" class="mt-2" (click)="copyText(inviteUrl)">Copy Url</button>
     </mat-card-content>
-</mat-card>
+<!-- </mat-card> -->
+
+
+

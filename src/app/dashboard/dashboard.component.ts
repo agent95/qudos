@@ -12,11 +12,15 @@ export class DashboardComponent implements OnInit {
 
   roles: string[] = [];
   isModerator: boolean = false;
+  username = "";
+
 
   ngOnInit(): void {
 
     if (this.tokenStorage.getToken()) {
-      this.roles = this.tokenStorage.getUser().roles;
+      const userDetails = this.tokenStorage.getUser();
+      this.roles = userDetails.roles;
+      this.username = userDetails.username;
 
       this.isModerator = this.roles.includes('ROLE_MODERATOR')
     }

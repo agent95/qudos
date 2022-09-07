@@ -1,0 +1,38 @@
+<!-- <mat-card class="w-1/2 m-auto"> -->
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <h2>Add a Value</h2>
+
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+    <mat-form-field  class="w-full pt-1" appearance="fill">
+      <mat-label>New Value</mat-label>
+      <input
+       matInput
+        type="text"
+        name="value"
+        [(ngModel)]="form.value"
+        required
+        #value="ngModel"
+      />
+      <mat-error *ngIf="value.errors && f.submitted" >
+        Value is required!
+      </mat-error>
+  </mat-form-field>
+    <div class="flex justify-between">
+        <button mat-button color="secondary" (click)="closeModal()">Back</button>
+        <button type="submit" mat-stroked-button mat-button color="primary" class="mt-2">Send</button>
+    </div>
+        <mat-error *ngIf="f.submitted && isInviteFailed">
+           {{ errorMessage }}
+        </mat-error>
+    </form>
+
+
+    </mat-card-content>
+
+<!-- </mat-card> -->

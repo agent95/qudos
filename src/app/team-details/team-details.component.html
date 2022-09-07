@@ -1,0 +1,71 @@
+<div>
+    <h2>{{team.name}} <sup *ngIf="team.isOwner" class="text-red-500 text-xs"><small class="uppercase">admin</small></sup></h2>
+    <!-- <small>Team Id - {{myTeamId}}</small> -->
+    <div class="mb-4">
+        <small class="text-slate-500 uppercase">Team Values</small>
+        <div class="flex" *ngIf="team.values.length">
+            <ol>
+                <li *ngFor="let value of team.values;let i = index">
+                    <div class="flex">
+                        <span>{{value}} </span>
+                        <mat-icon *ngIf="team.isOwner" class="text-sm cursor-pointer ml-2 text-gray-500 hover:text-red-500" (click)="deleteValue(i)">close</mat-icon>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="flex flex-column justify-start mb-4" *ngIf="team.isOwner">
+            <button mat-button color="primary" class="uppercase" (click)="openAddValue()">+ Add Value</button>
+        </div>
+        
+        <mat-divider></mat-divider>
+    </div>
+
+
+    <small class="text-slate-500 uppercase">Team Members</small>
+    <div class="flex">
+        <ol>
+            <li *ngFor="let member of members">
+                <div class="flex">
+                    <span> {{member.username}}</span> 
+                    <!-- <span class="text-xs pl-2 text-gray-500 uppercase" *ngIf="team.isOwner">Admin</span> -->
+                </div>
+            </li>
+        </ol>
+        <!-- Member panel -->
+        <!-- <mat-accordion>
+            <mat-expansion-panel *ngFor="let member of members">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon mat-list-icon>account_circle</mat-icon> 
+                        <div mat-line class="px-2">{{member.username}}</div>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon *ngIf="team.isOwner">grade</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="flex gap-2">
+                    <form class="flex-grow">
+                        <mat-form-field class="w-full" appearance="fill">
+                          <mat-label>Message</mat-label>
+                          <input matInput #message maxlength="256" placeholder="Ex. Thanks for your help with...">
+                          <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                        </mat-form-field>
+                        <div class="flex flex-column justify-end">
+                            <button mat-button color="primary">Give Qudos</button>
+                        </div>
+                      </form>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion> -->
+        
+
+    </div>
+    <div class="flex flex-column justify-start my-2"  *ngIf="team.isOwner">
+        <button mat-button color="primary" class="uppercase" (click)="openAddMember()">+ Invite Member</button>
+    </div>
+    <div class="flex" *ngIf="isInvited">
+        <button mat-button color="secondary" class="uppercase text-red-600" (click)="rejectInvite()"><mat-icon class="text-sm text-red-600">close</mat-icon> Reject</button>
+        <button mat-button color="primary" class="uppercase" (click)="joinTeam()"><mat-icon class="text-sm text-green-600">check</mat-icon> Join</button>
+    </div>
+</div>

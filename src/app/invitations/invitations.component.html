@@ -1,0 +1,10 @@
+<mat-card class="w-full md:w-1/2 my-5">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <h2>Pending Invitations</h2>
+        <ol>
+            <li *ngFor="let team of myInvitations">
+                {{ team }}
+            </li>
+        </ol>
+    </mat-card-content>
+</mat-card>

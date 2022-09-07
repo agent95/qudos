@@ -1,0 +1,38 @@
+<div class="sm:flex justify-between gap-4 w-full">
+  <!-- <mat-card class="w-full"> -->
+    <mat-card-content class="w-full" fxLayout="column" fxLayoutAlign="center center">
+        <h2>Create Team</h2>
+        <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+
+      <mat-form-field  class="w-full pt-1" appearance="fill">
+        <mat-label>Team Name</mat-label>
+        <input
+         matInput
+          type="text"
+          name="teamName"
+          [(ngModel)]="form.teamName"
+          required
+          #teamName="ngModel"
+        />
+        <mat-error *ngIf="teamName.errors && f.submitted" >
+          Team Name is required!
+        </mat-error>
+        </mat-form-field>
+
+        <div class="flex justify-between">
+          <button mat-stroked-button mat-button color="secondary" (click)="closeModal()" class="mt-2">Back</button>
+          <button mat-stroked-button mat-button color="primary" class="mt-2">Submit</button>
+        </div>
+
+        <mat-error *ngIf="f.submitted && isCreateFailed">
+           {{ errorMessage }}
+        </mat-error>
+        </form>
+    </mat-card-content>
+<!-- </mat-card> -->
+
+</div>

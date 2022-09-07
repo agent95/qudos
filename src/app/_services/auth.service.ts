@@ -26,9 +26,10 @@ export class AuthService {
   logout(){
     this.tokenStorage.signOut();
   }
-  invite(email: string): Observable<any> {
+  invite(email: string, teamId: string): Observable<any> {
     return this.http.post(AUTH_API + 'invite', {
-      email
+      email,
+      teamId,
     }, httpOptions);
   }
   validateInviteToken(token: string): Observable<any> {
@@ -50,11 +51,65 @@ export class AuthService {
       password
     }, httpOptions);
   }
-
   isAuthenticated(): boolean {
     const token = sessionStorage.getItem('auth-token') || undefined;
     // Check whether the token is expired and return
     // true or false
     return !this.jwtHelper.isTokenExpired(token);
   }
+// create team
+  createTeam(teamName: string, userId: string): Observable<any> {
+    return this.http.post(AUTH_API + 'createTeam', {
+      teamName,
+      userId,
+    }, httpOptions);
+  }
+
+  myTeams(userId: string): Observable<any> {
+    return this.http.post(AUTH_API + 'myTeams', {
+      userId,
+    }, httpOptions);
+  }
+
+  getTeamMembers(teamId: string): Observable<any> {
+    return this.http.post(AUTH_API + 'getTeamMembers', {
+      teamId,
+    }, httpOptions);
+  }
+
+  addValue(teamId: any, value:string): Observable<any> {
+    return this.http.post(AUTH_API + 'addValue', {
+      teamId,
+      value,
+    }, httpOptions);
+  }
+
+  joinTeam(teamId: any, userId:string): Observable<any> {
+    return this.http.post(AUTH_API + 'joinTeam', {
+      teamId,
+      userId,
+    }, httpOptions);
+  }
+
+  rejectInvite(teamId: any, userId:string): Observable<any> {
+    return this.http.post(AUTH_API + 'rejectInvite', {
+      teamId,
+      userId,
+    }, httpOptions);  
+  }
+
+  leaveTeam(teamId: any, userId:string): Observable<any> {
+    return this.http.post(AUTH_API + 'leaveTeam', {
+      teamId,
+      userId,
+    }, httpOptions);  
+  }
+
+  deleteValue(teamId: any, value:string): Observable<any> {
+    return this.http.post(AUTH_API + 'deleteValue', {
+      teamId,
+      value,
+    }, httpOptions);  
+  }
+
 }

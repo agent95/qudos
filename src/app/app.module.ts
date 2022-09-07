@@ -25,6 +25,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginBtnComponent } from './login-btn/login-btn.component';
 
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+import { CreateTeamComponent } from './create-team/create-team.component';
+import { MyTeamsComponent } from './my-teams/my-teams.component';
+import { InvitationsComponent } from './invitations/invitations.component';
+import { InvitedToComponent } from './invited-to/invited-to.component';
+import { ModalComponent } from './modal/modal.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
+import { AddMembersComponent } from './add-members/add-members.component';
+import { AddValueComponent } from './add-value/add-value.component';
+import { SignUpBtnComponent } from './sign-up-btn/sign-up-btn.component';
 
 
 @NgModule({
@@ -42,7 +51,16 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
     AcceptInviteComponent,
     ResetPasswordComponent,
     DashboardComponent,
-    LoginBtnComponent
+    LoginBtnComponent,
+    CreateTeamComponent,
+    MyTeamsComponent,
+    InvitationsComponent,
+    InvitedToComponent,
+    ModalComponent,
+    TeamDetailsComponent,
+    AddMembersComponent,
+    AddValueComponent,
+    SignUpBtnComponent
   ],
   imports: [
     BrowserModule,

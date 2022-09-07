@@ -27,7 +27,7 @@ const routes: Routes = [
   // { path: 'invite', component: InviteComponent , canActivate: [AuthGuard] },
   // { path: 'reset-password/:email', component: ResetPasswordComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

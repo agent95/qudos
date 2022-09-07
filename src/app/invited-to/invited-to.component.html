@@ -1,0 +1,10 @@
+<mat-card *ngIf="invitedTo.length" class="w-full md:w-1/2 my-5">
+    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <h2>Invited To</h2>
+        <ol>
+            <li *ngFor="let team of invitedTo">
+                {{ team }}
+            </li>
+        </ol>
+    </mat-card-content>
+</mat-card>
