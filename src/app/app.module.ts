@@ -34,6 +34,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
 import { AddMembersComponent } from './add-members/add-members.component';
 import { AddValueComponent } from './add-value/add-value.component';
 import { SignUpBtnComponent } from './sign-up-btn/sign-up-btn.component';
+import { SlackComponent } from './slack/slack.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { SignUpBtnComponent } from './sign-up-btn/sign-up-btn.component';
     TeamDetailsComponent,
     AddMembersComponent,
     AddValueComponent,
-    SignUpBtnComponent
+    SignUpBtnComponent,
+    SlackComponent
   ],
   imports: [
     BrowserModule,
